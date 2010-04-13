@@ -22,15 +22,11 @@ class ToDo(object):
         """Ensure the data directory is in place."""
         if not os.path.exists(self.data_path):
             os.mkdir(self.data_path)
-        
-        if not os.path.exists(self.todotxt_path):
+
+        for txt_path in (self.todotxt_path, self.donetxt_path):
             # 'Touch' the file. Works regardless of the file's existence (unlike os.utime).
-            open(self.todotxt_path, 'a').close()
+            open(txt_path, 'a').close()
         
-        if not os.path.exists(self.donetxt_path):
-            # 'Touch' the file. Works regardless of the file's existence (unlike os.utime).
-            open(self.donetxt_path, 'a').close()
-    
     def load_todo(self):
         self.setup()
         todo_file = open(self.todotxt_path, 'r')
