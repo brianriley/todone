@@ -29,7 +29,7 @@ class ToDo(object):
         
         if not os.path.exists(self.donetxt_path):
             # 'Touch' the file. Works regardless of the file's existence (unlike os.utime).
-            open(self.todotxt_path, 'a').close()
+            open(self.donetxt_path, 'a').close()
     
     def load_todo(self):
         self.setup()
