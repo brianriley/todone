@@ -146,7 +146,8 @@ class ToDo(object):
 class TestToDo(unittest.TestCase):
     def setUp(self):
         self.data_path = os.path.join('/tmp', 'todone_test')
-        self.nuke_test_dir()
+        if os.path.exists(self.data_path):
+            self.nuke_test_dir()
         self.todo = ToDo(self.data_path)
         self.sample_todos = ['One', 'Two', '@work Three', '@home Four', '@work Five']
     
